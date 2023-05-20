@@ -1,0 +1,161 @@
+#!/bin/bash
+# -----------------------------------------------------------------------------
+# Plot an overview of the current instrumentation at Askja volcano.
+#
+# :author:
+#     C A Bacon
+# :copyright:
+#     2023, C A Bacon
+# :license:
+#     CC0 1.0 Universal License
+#     (https://creativecommons.org/publicdomain/zero/1.0/legalcode)
+#
+# -----------------------------------------------------------------------------
+
+# --- i/o paths ---
+METADATA=$PWD/../../metadata
+XY=$METADATA/xy
+GRD=$METADATA/grd
+CPT=$METADATA/cpt
+INSTRUMENTS=$METADATA/instruments
+
+# --- Input information ---
+NAME=figure02
+
+# --- GMT settings ---
+bash defaults.gmt
+
+# --- Define plot region and projection ---
+WEST=-17.3; EAST=-16.1; SOUTH=64.85; NORTH=65.25
+region=$WEST/$EAST/$SOUTH/$NORTH
+proj=M15c
+gmt mapproject -R$region -J$proj -W > tmp
+read w h < tmp
+
+# --- The colour zone ---
+gmt makecpt -C$CPT/grey_topo.cpt -T-1000/2500/1 -Z > topo.cpt
+station_clr1="#7f7f7f"
+station_clr2="#ef6548"
+station_clr3=blueviolet
+station_clr4=springgreen3
+
+echo "Building figure..."
+gmt begin $NAME pdf,png
+    echo "...plotting DEM..."
+    gmt grdimage -J$proj -R$region $GRD/askja_20m.grd \
+        -I$GRD/askja_20mI.grd -Ctopo.cpt -X6c -Y10c
+    
+    echo "...plotting fissure swarms..."
+    gmt plot $XY/fisswarms_fil.xy -Gtan@80 $add
+    gmt plot $XY/fisswarms_out.xy -W0.5p,black $add
+
+    echo "...plotting rivers and lakes..."
+    gmt plot $XY/big_rivers.xy -W0.7p,lightblue $add
+    gmt plot $XY/rivers.xy -W0.1p,lightblue $add
+    gmt plot $XY/Hagongulon.xy -Glightblue $add
+    gmt plot $XY/Halslon.xy -Glightblue $add
+    gmt plot $XY/oskjuvatn.xy -Glightblue $add
+    gmt plot $XY/oskjuvatn.xy -W0.1p,black $add
+
+    echo "...plotting roads..."
+    gmt plot $XY/roads_all_East.xy -W0.4p,firebrick@40
+
+    echo "...plotting Askja caldera complex..."
+    gmt plot $XY/askja_caldera.xy -Sf0.10/0.085c+l -W0.5p,black
+
+    echo "...plotting central volcano outlines..."
+    gmt plot $XY/centralvolc_all.xy -W0.75p,black,-
+
+    echo "...plotting instruments..."
+    awk '{print $3,$2}' $INSTRUMENTS/seismic_network_22-23.txt | gmt plot -St0.3 \
+        -Wthinner -G$station_clr1
+    awk '{print ($3,$2)}' $INSTRUMENTS/gnss_network_22-23.txt | gmt plot -Ss0.3 \
+        -Wthinner -G$station_clr2
+    awk '{print ($3,$2)}' $INSTRUMENTS/proposed_high_res_mag.txt | gmt plot -Sc0.5 \
+        -W1.5p,$station_clr3
+    awk '{print ($3,$2)}' $INSTRUMENTS/proposed_low_cost_mag.txt | gmt plot -Sc0.6 \
+        -W1.5p,$station_clr4
+
+    echo "...adding legend..."
+    cat <<- EOF | gmt legend -Dx9c/18.6c+w4c/4.2c+jTL+l1.2 --FONT_ANNOT=12p,Helvetica
+G 0.4c
+S 0.7c t 0.6c $station_clr1 1p,black 1.2c Seismic site
+G 0.4c
+S 0.7c s 0.6c $station_clr2 1p,black 1.2c GNSS site
+G 0.4c
+S 0.7c c 0.6c white 1p,$station_clr3 1.2c Proposed standard
+G 0.15c
+S 0.7c c 0.2c white 1p,white 1.2c magnetometer site
+G 0.4c
+S 0.7c c 0.6c white 1p,$station_clr4 1.2c Proposed low-cost
+G 0.15c
+S 0.7c c 0.2c white 1p,white 1.2c magnetometer site
+G 1.35c
+N 1
+EOF
+
+    cat <<- EOF | gmt legend -Dx0.2c/2.4c+w4c/2.2c+jTL+l1.2 -F+gwhite+pthin
+N 1
+EOF
+    echo "...adding scalebar..."
+    gmt psscale -Dx2.2c/1.7c+jCM+w2.6c/0.15c+e+h+ml -G0/2000 \
+        --MAP_TICK_LENGTH=0.1c -Ctopo.cpt --FONT_ANNOT=8p,Helvetica \
+        --FONT_LABEL=8p,Helvetica -Ba2000f500+l"Elevation (m)"
+
+    echo "...final basemap..."
+    gmt basemap -Bswne -Ln$(echo "2.2/$w" | bc -l)/0.07+jCM+c65+w10k \
+        --FONT_ANNOT_PRIMARY=8p,Helvetica
+    gmt basemap -Bxa0.2f0.1 -Bya0.1f0.05 -BSWne
+
+    echo "...plotting inset map..."
+    gmt pscoast -R-16.87/-16.62/65/65.088 -JM8c -B0 -B+gwhite -Df -N1 -W -A5000 \
+        -Y$(echo "$h + 0.8" | bc -l)c
+
+    echo "...plotting DEM..."
+    gmt grdimage $GRD/askja_20m.grd \
+        -I$GRD/askja_20mI.grd -Ctopo.cpt
+    
+    echo "...plotting fissure swarms..."
+    gmt plot $XY/fisswarms_fil.xy -Gtan@80 $add
+    gmt plot $XY/fisswarms_out.xy -W0.5p,black $add
+
+    echo "...plotting rivers and lakes..."
+    gmt plot $XY/Halslon.xy -Glightblue $add
+    gmt plot $XY/oskjuvatn.xy -Glightblue $add
+    gmt plot $XY/oskjuvatn.xy -W0.1p,black $add
+
+    echo "...plotting roads..."
+    gmt plot $XY/roads_all_East.xy -W0.4p,firebrick@40
+
+    echo "...plotting Askja caldera complex..."
+    gmt plot $XY/askja_caldera.xy -Sf0.10/0.085c+l -W0.5p,black
+
+    echo "...plotting central volcano outlines..."
+    gmt plot $XY/centralvolc_all.xy -W0.75p,black,-
+
+    echo "...plotting instruments..."
+    awk '{print $3,$2}' $INSTRUMENTS/seismic_network_22-23.txt | gmt plot -St0.3 \
+        -Wthinner -G$station_clr1
+    awk '{print ($3,$2)}' $INSTRUMENTS/gnss_network_22-23.txt | gmt plot -Ss0.3 \
+        -Wthinner -G$station_clr2
+    awk '{print ($3,$2)}' $INSTRUMENTS/proposed_high_res_mag.txt | gmt plot -Sc0.4 \
+        -W1.2p,$station_clr3
+    awk '{print ($3,$2)}' $INSTRUMENTS/proposed_low_cost_mag.txt | gmt plot -Sc0.5 \
+        -W1.2p,$station_clr4
+
+    echo "...plotting coloured GNSS stations..."
+    echo "-16.651771 65.056311" | gmt plot -Ss0.3 -Wthinner -G0/0/0
+    echo "-16.735901 65.079207" | gmt plot -Ss0.3 -Wthinner -G59/15/112
+    echo "-16.830174 65.050998" | gmt plot -Ss0.3 -Wthinner -G140/41/129
+    echo "-16.764546 65.060733" | gmt plot -Ss0.3 -Wthinner -G222/73/104
+    echo "-16.798821 65.038200" | gmt plot -Ss0.3 -Wthinner -G254/159/109
+
+    echo "-16.747 65.03 Öskjuvatn" | gmt text -F+f10p,Helvetica-Oblique,gray28+jCM
+
+    gmt basemap -Bswne
+gmt end
+
+echo "...removing temporary files..."
+rm tmp gmt.* *.cpt
+
+echo "Complete."

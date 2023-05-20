@@ -1,0 +1,22 @@
+#!/bin/bash
+# -----------------------------------------------------------------------------
+# Retrieve 15-arcsecond DEM tiles for the Askja region.
+#
+# :author:
+#     C A Bacon
+# :copyright:
+#     2023, C A Bacon
+# :license:
+#     CC0 1.0 Universal License
+#     (https://creativecommons.org/publicdomain/zero/1.0/legalcode)
+#
+# -----------------------------------------------------------------------------
+
+GRD=$PWD/../../metadata/grd
+
+WEST=-17.3; EAST=-16.1; SOUTH=64.85; NORTH=65.25
+region=$WEST/$EAST/$SOUTH/$NORTH
+
+mkdir -p $GRD
+gmt grdcut @earth_relief_15s -R$region -G$GRD/askja_15s.grd
+gmt grdgradient $GRD/askja_15s.grd -G$GRD/askja_15sI.grd -V -A0/270

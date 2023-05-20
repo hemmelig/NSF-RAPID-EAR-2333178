@@ -1,0 +1,7 @@
+*.pdf
+*.png
+*.grd
+06_program-officer-concurrence-email.md
+.DS_Store
+data/gnss/
+*rivers.xy
