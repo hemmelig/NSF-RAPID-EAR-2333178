@@ -10,6 +10,10 @@ echo "Build references file..."
 pandoc 02_references.md --pdf-engine=xelatex -o references.pdf
 echo "...complete!"
 
+echo "Build budget justification file..."
+pandoc 03_budget-justification.md --pdf-engine=xelatex -o budget-justification.pdf
+echo "...complete!"
+
 echo "Build facilities file..."
 pandoc 04_facilities.md --pdf-engine=xelatex -o facilities.pdf
 echo "...complete!"

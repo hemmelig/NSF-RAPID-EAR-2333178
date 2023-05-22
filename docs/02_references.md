@@ -6,7 +6,7 @@ output: pdf_document
 ---
 \pagenumbering{gobble}
 
-### REFERENCES CITED
+## REFERENCES CITED
 
 Bacon, C. A., Johnson, J. H., White, R. S., & Rawlinson, N. (2022). On the origin of seismic anisotropy in the shallow crust of the Northern Volcanic Zone, Iceland. *Journal of Geophysical Research: Solid Earth, 127*(1), e2021JB022655.  
 URL: [https://doi.org/10.1029/2021JB022655](https://doi.org/10.1029/2021JB022655)
@@ -33,7 +33,7 @@ Jónsson, G., & Kristjánsson, L. (2000). Aeromagnetic measurements over Mýrdal
 URL: [https://jokull.jorfi.is/articles/jokull2000.49/jokull2000.49.047.pdf](https://jokull.jorfi.is/articles/jokull2000.49/jokull2000.49.047.pdf)
 
 Sturkell, E., & Sigmundsson, F. (2000). Continuous deflation of the Askja caldera, Iceland, during the 1983–1998 noneruptive period. *Journal of Geophysical Research: Solid Earth, 105*(B11), 25671-25684.  
-URL: 
+URL: [https://doi.org/10.1029/2000JB900178](https://doi.org/10.1029/2000JB900178)
 
 de Zeeuw-van Dalfsen, E., Pedersen, R., Hooper, A., & Sigmundsson, F. (2012). Subsidence of Askja caldera 2000–2009: Modelling of deformation processes at an extensional plate boundary, constrained by time series InSAR analysis. *Journal of Volcanology and Geothermal Research, 213*, 72–82.  
 URL: [https://doi.org/10.1016/j.jvolgeores.2011.11.004](https://doi.org/10.1016/j.jvolgeores.2011.11.004)

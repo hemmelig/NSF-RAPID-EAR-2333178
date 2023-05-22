@@ -6,7 +6,7 @@ output: pdf_document
 ---
 \pagenumbering{gobble}
 
-### DATA MANAGEMENT PLAN
+## DATA MANAGEMENT PLAN
 
 All data recorded as part of this RAPID proposal will be freely and openly available via field-standard portals.
 

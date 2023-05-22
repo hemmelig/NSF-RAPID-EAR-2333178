@@ -1,6 +1,7 @@
 *.pdf
 *.png
 *.grd
+*.docx
 06_program-officer-concurrence-email.md
 .DS_Store
 data/gnss/
