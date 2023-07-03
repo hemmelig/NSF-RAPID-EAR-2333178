@@ -3,7 +3,7 @@ pandoc 00_project-summary.md --pdf-engine=xelatex -o project-summary.pdf
 echo "...complete!"
 
 echo "Build project description file..."
-pandoc 01_project-description.md --pdf-engine=xelatex -o project-description.pdf
+pandoc 01_project-description.md -H disable_float.tex --pdf-engine=xelatex -o project-description.pdf
 echo "...complete!"
 
 echo "Build references file..."
