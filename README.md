@@ -1,20 +1,20 @@
 # Collaborative Research: RAPID: A novel magnetometer network to capture the ongoing inflationary episode at Askja volcano, Iceland
 
-This repository brings together the code, data, and metadata used in support of NSF RAPID proposal 114396.
+This repository brings together the code, data, and metadata used to prepare the proposal for the funded [NSF RAPID project EAR-2333178](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2333178). This award is linked with [EAR-2333180](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2333180).
 
 To reproduce the documents and figures, clone this repository and navigate into the repository directory:
 
 ```
-git clone https://github.com/hemmelig/NSF-RAPID-113496
-cd NSF-RAPID-113496
+git clone https://github.com/hemmelig/NSF-RAPID-EAR-2333178
+cd NSF-RAPID-EAR-2333178
 ```
 
 ## Steps to reproduce figures
 1. Install the packages listed in the `requirements.txt` file, either manually, or using a virtual environment management system e.g. conda:
 
 ```
-conda create --name nsf-rapid-113496 python=3.11
-conda activate nsf-rapid-113496
+conda create --name nsf-rapid-2333178 python=3.11
+conda activate nsf-rapid-2333178
 pip install -r requirements.txt
 conda install -c conda-forge pygmt
 ```
