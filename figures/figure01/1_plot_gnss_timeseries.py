@@ -1,11 +1,8 @@
-# -*- coding: utf-8 -*-
 """
 Plot the vertical position GNSS time-series data for Askja.
 
-:author:
-    C A Bacon
 :copyright:
-    2023, C A Bacon
+    2023, Conor A. Bacon
 :license:
     CC0 1.0 Universal License
     (https://creativecommons.org/publicdomain/zero/1.0/legalcode)
@@ -22,7 +19,7 @@ import obspy
 import pandas as pd
 
 
-plt.style.use("basic_style")
+plt.style.use("../basic_style.mplstyle")
 mpl.rcParams["font.family"] = "Helvetica"
 
 repo_base = pathlib.Path.cwd().parents[1]
@@ -40,7 +37,7 @@ clrs = iter(
 fig, ax = plt.subplots(1, 1, figsize=(7, 3), layout="constrained")
 for station, clr in zip(stations, clrs):
     ts = pd.read_csv(
-        data_dir / f"{station}_timeseries.txt", delim_whitespace=True
+        data_dir / f"{station}_timeseries.txt", sep=r"\s+"
     )
 
     ts["utcdatetime"] = ts.apply(
@@ -67,7 +64,7 @@ for station, clr in zip(stations, clrs):
     for cap in caps:
         cap.set_markeredgewidth(0.2)
 
-ax.set_ylabel("Up, mm")
+ax.set_ylabel("Up, cm")
 ax.set_xlim([dt(year=2021, month=9, day=1), dt.now()])
 ax.set_xlabel("Date")
 plt.legend()
