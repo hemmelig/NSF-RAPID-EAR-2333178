@@ -1,0 +1,37 @@
+id: raw-recordings
+title: Raw data recordings
+type: external
+provenance:
+  source: Zenodo
+  url: https://zenodo.org/records/17965655
+  doi: 10.5281/zenodo.17965655
+  accessed: 2026-04-04T15:29:38.388579+00:00Z
+ownership:
+  license: null
+storage:
+  local: data/external/raw-recordings
+  remote: https://zenodo.org/records/17965655
+pooch:
+  base_url: doi:10.5281/zenodo.17965655/
+  registry_mode: doi
+files:
+  2024.tar.7z:
+    title: 2024.tar.7z
+    file_name: 2024.tar.7z
+    known_hash: md5:56dcf86d240a2129a0e09a1c1b2c4bfc
+    processor:
+      kind: none
+    target_path: data/external/raw-recordings/2024.tar.7z
+    discovered: true
+    status: active
+    added: 2026-04-04T15:29:38.388579+00:00Z
+  2025.tar.7z:
+    title: 2025.tar.7z
+    file_name: 2025.tar.7z
+    known_hash: md5:6d5a806fdd211af2a2cc7a7d6f8bb837
+    processor:
+      kind: none
+    target_path: data/external/raw-recordings/2025.tar.7z
+    discovered: true
+    status: active
+    added: 2026-04-04T15:29:38.388579+00:00Z

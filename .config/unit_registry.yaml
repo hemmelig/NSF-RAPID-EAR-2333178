@@ -1,0 +1,7 @@
+work_units:
+  build-miniseed-archive:
+    created: '2026-04-04T15:35:08.737272+00:00'
+    status: active
+    path: workspace/build-miniseed-archive
+    description: 'Construct the miniSEED archive from raw recordings'
+    tags: []

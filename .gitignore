@@ -1,0 +1,4 @@
+data/external/
+data/processed/
+environments/
+.DS_Store
