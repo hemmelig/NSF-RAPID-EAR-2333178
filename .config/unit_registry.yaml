@@ -3,5 +3,12 @@ work_units:
     created: '2026-04-04T15:35:08.737272+00:00'
     status: active
     path: workspace/build-miniseed-archive
-    description: 'Construct the miniSEED archive from raw recordings'
+    description: Construct the miniSEED archive from raw recordings
     tags: []
+  data-availability:
+    created: '2026-04-04T16:59:31.729992+00:00'
+    status: archived
+    path: archive/data-availability
+    description: ''
+    tags: []
+    archived_at: '2026-04-04T17:14:36.526591+00:00'

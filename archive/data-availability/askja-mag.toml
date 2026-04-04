@@ -1,0 +1,32 @@
+[compute]
+stations = [
+    "6D.DYFM",
+    "6D.KAFM",
+    "6D.MOFM",
+    "6D.OLFM",
+    "6D.RIFM",
+    "6D.STFM",
+]
+years = [
+    2023,
+    2024,
+    2025
+]
+channel = "LFZ"
+archive_path = "../../data/internal/archive/"
+product_path = "../../data/processed/availability"
+
+[visualise]
+starttime = "2023-08-15"
+endtime = "2025-08-22"
+stations = [
+    "6D.DYFM",
+    "6D.KAFM",
+    "6D.MOFM",
+    "6D.OLFM",
+    "6D.RIFM",
+    "6D.STFM",
+]
+channel = "LFZ"
+product_path = "../../data/processed/availability"
+filename = "askja-mag-availability-plot"
