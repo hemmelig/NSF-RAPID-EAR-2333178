@@ -1,0 +1,12 @@
+[project]
+name = "data-availability"
+version = "0.1.0"
+description = "Make data availability visualisations"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "miniseed-availability",
+]
+
+[tool.uv.sources]
+miniseed-availability = { git = "https://github.com/hemmelig/miniseed-availability" }
