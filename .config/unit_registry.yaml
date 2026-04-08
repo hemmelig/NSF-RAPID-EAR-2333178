@@ -1,10 +1,11 @@
 work_units:
   build-miniseed-archive:
     created: '2026-04-04T15:35:08.737272+00:00'
-    status: active
-    path: workspace/build-miniseed-archive
+    status: archived
+    path: archive/build-miniseed-archive
     description: Construct the miniSEED archive from raw recordings
     tags: []
+    archived_at: '2026-04-08T21:31:25.727746+00:00'
   data-availability:
     created: '2026-04-04T16:59:31.729992+00:00'
     status: archived
@@ -12,3 +13,15 @@ work_units:
     description: ''
     tags: []
     archived_at: '2026-04-04T17:14:36.526591+00:00'
+  data-summaries:
+    created: '2026-04-04T17:19:55.380507+00:00'
+    status: active
+    path: workspace/data-summaries
+    description: ''
+    tags: []
+  basic-corrections:
+    created: '2026-04-05T14:09:28.090836+00:00'
+    status: active
+    path: workspace/basic-corrections
+    description: ''
+    tags: []

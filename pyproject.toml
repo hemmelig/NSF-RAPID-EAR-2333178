@@ -1,0 +1,18 @@
+[project]
+name = "ear-2333178"
+version = "0.1.0"
+description = "Central project file for EAR-2333178"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "pmtk",
+    "pre-commit>=4.5.1",
+]
+
+[tool.uv.sources]
+pmtk = { git = "https://github.com/hemmelig/pmtk" }
+
+[tool.uv.workspace]
+members = [
+    "workspace/build-miniseed-archive",
+]
