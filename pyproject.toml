@@ -15,4 +15,6 @@ pmtk = { git = "https://github.com/hemmelig/pmtk" }
 [tool.uv.workspace]
 members = [
     "workspace/build-miniseed-archive",
+    "workspace/data-summaries",
+    "archive/data-availability",
 ]

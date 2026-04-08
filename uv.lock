@@ -9,7 +9,8 @@ resolution-markers = [
 
 [manifest]
 members = [
-    "build-miniseed-archive",
+    "data-availability",
+    "data-summaries",
     "ear-2333178",
 ]
 
@@ -20,33 +21,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/57/ba/046ceea27344560984e26a590f90bc7f4a75b06701f653222458922b558c/annotated_doc-0.0.4.tar.gz", hash = "sha256:fbcda96e87e9c92ad167c2e53839e57503ecfda18804ea28102353485033faa4", size = 7288 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/1e/d3/26bf1008eb3d2daa8ef4cacc7f3bfdc11818d111f7e2d0201bc6e3b49d45/annotated_doc-0.0.4-py3-none-any.whl", hash = "sha256:571ac1dc6991c450b25a9c2d84a3705e2ae7a53467b5d111c24fa8baabbed320", size = 5303 },
-]
-
-[[package]]
-name = "archivetk"
-version = "0.1.0"
-source = { git = "https://github.com/hemmelig/miniseed-archivetk#7c7812e8196628bbeee5801b4a4dad372d7c08e6" }
-dependencies = [
-    { name = "obspy" },
-]
-
-[[package]]
-name = "build-miniseed-archive"
-version = "0.1.0"
-source = { virtual = "workspace/build-miniseed-archive" }
-dependencies = [
-    { name = "archivetk" },
-    { name = "obspy" },
-    { name = "pandas" },
-    { name = "pmtk" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "archivetk", git = "https://github.com/hemmelig/miniseed-archivetk" },
-    { name = "obspy", specifier = ">=1.5.0" },
-    { name = "pandas", specifier = ">=3.0.2" },
-    { name = "pmtk", git = "https://github.com/hemmelig/pmtk" },
 ]
 
 [[package]]
@@ -169,6 +143,38 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/a9/95/a3dbbb5028f35eafb79008e7522a75244477d2838f38cbb722248dabc2a8/cycler-0.12.1.tar.gz", hash = "sha256:88bb128f02ba341da8ef447245a9e138fae777f6a23943da4540077d3601eb1c", size = 7615 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e7/05/c19819d5e3d95294a6f5947fb9b9629efb316b96de511b418c53d245aae6/cycler-0.12.1-py3-none-any.whl", hash = "sha256:85cef7cff222d8644161529808465972e51340599459b8ac3ccbac5a854e0d30", size = 8321 },
+]
+
+[[package]]
+name = "data-availability"
+version = "0.1.0"
+source = { virtual = "archive/data-availability" }
+dependencies = [
+    { name = "miniseed-availability" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "miniseed-availability", git = "https://github.com/hemmelig/miniseed-availability" }]
+
+[[package]]
+name = "data-summaries"
+version = "0.1.0"
+source = { virtual = "workspace/data-summaries" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "numpy" },
+    { name = "obspy" },
+    { name = "pandas" },
+    { name = "pmtk" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "matplotlib", specifier = ">=3.10.8" },
+    { name = "numpy", specifier = ">=2.4.4" },
+    { name = "obspy", specifier = ">=1.5.0" },
+    { name = "pandas", specifier = ">=3.0.2" },
+    { name = "pmtk", git = "https://github.com/hemmelig/pmtk" },
 ]
 
 [[package]]
@@ -417,6 +423,17 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d6/54/cfe61301667036ec958cb99bd3efefba235e65cdeb9c84d24a8293ba1d90/mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba", size = 8729 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8", size = 9979 },
+]
+
+[[package]]
+name = "miniseed-availability"
+version = "0.1.0"
+source = { git = "https://github.com/hemmelig/miniseed-availability#2fa7b403060b96804f6e3313a1687b28c19b4d28" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "numpy" },
+    { name = "obspy" },
+    { name = "pandas" },
 ]
 
 [[package]]
